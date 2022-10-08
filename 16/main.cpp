@@ -7,20 +7,18 @@ public:
     int threeSumClosest(vector<int>& nums, int target) {
         int start,end;
         int best_sum;
-        int last_sum;
+        int tmp_sum;
         best_sum = nums[0]+nums[1]+nums[2];
         sort(nums.begin(),nums.end());
         for(int i = 0;i<nums.size()-1;i++){
             start = i+1;
             end = nums.size()-1;
-            last_sum= nums[i]+nums[start]+nums[end];
             while(end>start){
-                last_sum = nums[i]+nums[start]+nums[end];
-
-                if(abs(target-best_sum)>abs(target-last_sum)){
-                    best_sum=last_sum;
+                tmp_sum = nums[i]+nums[start]+nums[end];
+                if(abs(target-best_sum)>abs(target-tmp_sum)){
+                    best_sum=tmp_sum;
                 }
-                if(last_sum<target){
+                if(tmp_sum<target){
                     start++;
                 }else{
                     end--;
